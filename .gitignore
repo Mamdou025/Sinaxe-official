@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local contact-form submissions (dev-only persistence until a real
+# email/CRM backend is wired up)
+/uploads
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
