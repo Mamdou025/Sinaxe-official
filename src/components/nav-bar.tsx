@@ -13,6 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { Logo } from "./logo";
+import { MobileNav } from "./mobile-nav";
 import { NavDropdown, type NavDropdownColumn } from "./nav-dropdown";
 
 const iconProps = { size: 22, weight: "fill" as const };
@@ -130,12 +131,18 @@ export function NavBar() {
             Careers
           </Link>
         </nav>
-        <Link
-          href="/contact"
-          className="ml-auto bg-ink px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-ink-soft"
-        >
-          Contact Us
-        </Link>
+        <div className="ml-auto flex items-center gap-3">
+          <MobileNav
+            productColumns={productColumns}
+            resourceColumns={resourceColumns}
+          />
+          <Link
+            href="/contact"
+            className="bg-ink px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-ink-soft"
+          >
+            Contact Us
+          </Link>
+        </div>
       </div>
     </header>
   );
