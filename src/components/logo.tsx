@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { LogoMark } from "./logo-mark";
 
 // Icon + wordmark as two separate elements with real, controllable
 // spacing — replaces the old single flattened logo.png, where the mark
 // (itself S-shaped) sat flush against "Sinaxe" and read like a double S.
 // The wordmark is a cropped image of the original artwork (not live text)
-// so it keeps the exact original typeface.
+// so it keeps the exact original typeface. The icon mark is per-block
+// colored (see logo-mark.tsx) regardless of light/dark context; the
+// wordmark stays flat black/white as before.
 export function Logo({
   dark = false,
   className = "",
@@ -12,19 +15,9 @@ export function Logo({
   dark?: boolean;
   className?: string;
 }) {
-  const iconFilter = dark
-    ? "[filter:brightness(0)_invert(1)]"
-    : "[filter:brightness(0)]";
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <Image
-        src="/brand/sinaxe-mark.png"
-        alt=""
-        width={28}
-        height={27}
-        priority
-        className={`h-7 w-auto ${iconFilter}`}
-      />
+      <LogoMark className="h-7 w-[27px] shrink-0" />
       <Image
         src={dark ? "/brand/sinaxe-wordmark-white.png" : "/brand/sinaxe-wordmark.png"}
         alt="Sinaxe"
